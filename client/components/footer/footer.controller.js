@@ -7,6 +7,4 @@ angular.module('sipkpApp')
         $scope.year1 = parseInt(2015);
         $scope.year2 = d.getFullYear();
 
-        $scope.link = 'contact';
-
     });
