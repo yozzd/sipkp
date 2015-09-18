@@ -1,0 +1,18 @@
+<div class="aside" tabindex="-1" role="dialog" ng-controller="AsideCtrl">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="$hide()"><span class="ion ion-ios-close-empty"></span></button>
+                <h4 class="aside-title">{{getCurrentUser().name}}</h4>
+            </div>
+            <div class="aside-body">
+                <div class="list-group" ng-show="isAdmin()">
+                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in adminmenu" class="list-group-item" title="{{menu.label}}"><span class="{{menu.icon}}"></span> {{menu.label}}</a>
+                </div>
+                <div class="list-group" ng-show="isUser()">
+                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in usermenu" class="list-group-item" title="{{menu.label}}"><span class="{{menu.icon}}"></span> {{menu.label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

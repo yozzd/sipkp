@@ -1,0 +1,71 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Daftar User</h3>
+                    <a href="" class="search pull-right" ng-click="showsearch=!showsearch" title="Cari"><span class="ion ion-ios-search-strong ion-w"></span></a>
+                </div>
+                <div class="panel-body" ng-show="showsearch">
+                    <div class="form-group">
+                        <label>Cari berdasarkan</label>
+                        <ui-select name="searchby" ng-model="searchby.selected" search-enabled="false">
+                            <ui-select-match>{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="searchby in searchbys">
+                                <div ng-bind-html="searchby"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group" ng-show="searchby.selected=='Username'">
+                        <label>Username</label>
+                        <input type="text" class="input-control" ng-model="search.email" />
+                    </div>
+                    <div class="form-group" ng-show="searchby.selected=='Kabupaten / Kota'">
+                        <label>Kabupaten / Kota</label>
+                        <input type="text" class="input-control" ng-model="search.kabkota" />
+                    </div>
+                    <div class="form-group" ng-show="searchby.selected=='No. Telp.'">
+                        <label>No. Telp.</label>
+                        <input type="text" class="input-control" ng-model="search.telp" />
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 3%;">No</th>
+                                <th class="sort" ng-click="predicate='email'; reverse=!reverse">
+                                    <span>Username<span ng-show="predicate=='email'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='kabkota'; reverse=!reverse">
+                                    <span>Kabupaten / Kota<span ng-show="predicate=='kabkota'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='telp'; reverse=!reverse">
+                                    <span>No. Telp<span ng-show="predicate=='telp'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in datas | orderBy:predicate:reverse | filter:search">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.kabkota}}</td>
+                                <td>{{data.telp}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

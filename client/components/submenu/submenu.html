@@ -1,0 +1,35 @@
+<div class="submenu">
+    <div class="container">
+        <a class="menu" href="" ng-show="isAdmin()||isUser()" data-template-url="components/template/aside.tpl.html" data-placement="left" data-animation="am-slide-left" bs-aside data-container="body"><span class="ion ion-navicon-round"></span> Menu</a>
+        <ul class="list-inline pull-right" ng-show="statepr||stategr||stateec">
+            <li ng-repeat="menu in guest">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+        <ul class="list-inline pull-right" ng-show="isAdmin()&&(stateprbt||stategrbt||stateecbt)">
+            <li ng-repeat="menu in adminbt">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+        <ul class="list-inline pull-right" ng-show="isAdmin()&&(stateprbk||stategrbk||stateecbk)">
+            <li ng-repeat="menu in adminbk">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+        <ul class="list-inline pull-right" ng-show="isUser()&&(stateuprh||stateugrh||stateuech)">
+            <li ng-repeat="menu in userh">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+        <ul class="list-inline pull-right" ng-show="isUser()&&(stateuprm||stateugrm||stateuecm)">
+            <li ng-repeat="menu in userm">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+        <ul class="list-inline pull-right" ng-show="isUser()&&(stateuprb||stateugrb||stateuecb)">
+            <li ng-repeat="menu in userb">
+                <a ui-sref="{{menu.state}}" ui-sref-active="active">{{menu.label}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

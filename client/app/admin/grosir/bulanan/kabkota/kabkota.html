@@ -1,0 +1,80 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Laporan</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Bulan</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal, kabkota.selected, komoditi.selected)" data-date-format="MMMM yyyy" bs-datepicker />
+                    </div>
+                    <div class="form-group">
+                        <label>Kabupaten / Kota</label>
+                        <ui-select name="kabkota" ng-model="kabkota.selected" ng-change="get(tanggal, kabkota.selected, komoditi.selected)">
+                            <ui-select-match>{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="kabkota in kabkotas | filter: $select.search">
+                                <div ng-bind-html="kabkota | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+            <div class="well" ng-show="grb.length>0">
+                <h4>Laporan Bulanan Harga Grosir Komoditas Peternakan Per Kabupaten / Kota</h4>
+            </div>
+            <div class="panel panel-default" ng-show="nodata">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}}</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="grb.length>0">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}}</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td class="text-center" ng-repeat="range in range"><strong>{{range}}</strong></td>
+                            </tr>
+                            <tr ng-repeat="(key,value) in komoditas">
+                                <td class="text-centr"><strong>{{value}}</strong></td>
+                                <td ng-repeat="data in grb[key] track by $index" class="text-right">{{data|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="grb.length>0">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Komoditas {{komoditi.selected}} - {{kabkota.selected}}</h3>
+                    <ui-select name="komoditi" class="pull-right" ng-model="komoditi.selected" ng-change="get(tanggal, kabkota.selected, komoditi.selected)">
+                        <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                            <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="grbdata" chart-labels="grblabels" chart-legend="true" chart-series="grbseries" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

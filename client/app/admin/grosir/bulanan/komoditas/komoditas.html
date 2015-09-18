@@ -1,0 +1,66 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Laporan</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Bulan</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal, komoditi.selected)" data-date-format="MMMM yyyy" bs-datepicker />
+                    </div>
+                    <div class="form-group">
+                        <label>Komoditas</label>
+                        <ui-select name="komoditi" ng-model="komoditi.selected" ng-change="get(tanggal, komoditi.selected)">
+                            <ui-select-match>{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                                <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+            <div class="well" ng-show="grb">
+                <h4>Laporan Bulanan Harga Grosir Komoditas Peternakan Per Komoditas {{komoditi.selected}}</h4>
+            </div>
+            <div class="panel panel-default" ng-show="grb">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}}</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <tbody>
+                            <tr>
+                                <td><strong>Kabupaten / Kota</strong></td>
+                                <td ng-repeat="range in range" class="text-center"><strong>{{range}}</strong></td>
+                            </tr>
+                            <tr ng-repeat="data in grb">
+                                <td>{{data.kabkota}}</td>
+                                <td ng-repeat="komoditi in data.komoditi track by $index" class="text-right">{{komoditi|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="grb">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Komoditas {{komoditi.selected}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

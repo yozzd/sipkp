@@ -1,0 +1,329 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Bulan</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal,komoditi.selected)" data-date-format="MMMM yyyy" bs-datepicker />
+                    </div>
+                </div>
+            </div>
+            <div class="well">
+                <h4>Laporan Mingguan Harga Grosir Komoditas Peternakan</h4>
+            </div>
+
+            <!--Minggu I-->
+            <div class="panel panel-default" ng-hide="grm1">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu I</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="grm1">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu I</h3>
+                    <a href="" class="search pull-right" ng-click="graphgrm1=!graphgrm1" title="Grafik Minggu I"><span class="ion ion-arrow-graph-up-right ion-w"></span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Karkas Sapi</th>
+                                <th class="text-center">Karkas Kerbau</th>
+                                <th class="text-center">Karkas Kambing</th>
+                                <th class="text-center">Karkas Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">Karkas Itik</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in grm1">
+                                <td class="text-right">{{data.sapi|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.itik|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="graphgrm1">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Minggu I</h3>
+                    <ui-select name="komoditi" class="pull-right" ng-model="komoditi.selected" ng-change="get(tanggal,komoditi.selected)">
+                        <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                            <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="grm1data" chart-labels="grm1labels" chart-legend="true" chart-series="grm1series" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--Minggu II-->
+            <div class="panel panel-default" ng-hide="grm2">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu II</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="grm2">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu II</h3>
+                    <a href="" class="search pull-right" ng-click="graphgrm2=!graphgrm2" title="Grafik Minggu II"><span class="ion ion-arrow-graph-up-right ion-w"></span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Karkas Sapi</th>
+                                <th class="text-center">Karkas Kerbau</th>
+                                <th class="text-center">Karkas Kambing</th>
+                                <th class="text-center">Karkas Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">Karkas Itik</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in grm2">
+                                <td class="text-right">{{data.sapi|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.itik|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="graphgrm2">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Minggu II</h3>
+                    <ui-select name="komoditi" class="pull-right" ng-model="komoditi.selected" ng-change="get(tanggal,komoditi.selected)">
+                        <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                            <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="grm2data" chart-labels="grm2labels" chart-legend="true" chart-series="grm2series" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--Minggu III-->
+            <div class="panel panel-default" ng-hide="grm3">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu III</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="grm3">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu III</h3>
+                    <a href="" class="search pull-right" ng-click="graphgrm3=!graphgrm3" title="Grafik Minggu III"><span class="ion ion-arrow-graph-up-right ion-w"></span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Karkas Sapi</th>
+                                <th class="text-center">Karkas Kerbau</th>
+                                <th class="text-center">Karkas Kambing</th>
+                                <th class="text-center">Karkas Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">Karkas Itik</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in grm3">
+                                <td class="text-right">{{data.sapi|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.itik|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="graphgrm3">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Minggu III</h3>
+                    <ui-select name="komoditi" class="pull-right" ng-model="komoditi.selected" ng-change="get(tanggal,komoditi.selected)">
+                        <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                            <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="grm3data" chart-labels="grm3labels" chart-legend="true" chart-series="grm3series" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Minggu IV-->
+            <div class="panel panel-default" ng-hide="grm4">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu IV</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="grm4">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}} Minggu IV</h3>
+                    <a href="" class="search pull-right" ng-click="graphgrm4=!graphgrm4" title="Grafik Minggu IV"><span class="ion ion-arrow-graph-up-right ion-w"></span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Karkas Sapi</th>
+                                <th class="text-center">Karkas Kerbau</th>
+                                <th class="text-center">Karkas Kambing</th>
+                                <th class="text-center">Karkas Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">Karkas Itik</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in grm4">
+                                <td class="text-right">{{data.sapi|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.itik|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-show="graphgrm4">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-arrow-graph-up-right ion-w"></span> Grafik Minggu IV</h3>
+                    <ui-select name="komoditi" class="pull-right" ng-model="komoditi.selected" ng-change="get(tanggal,komoditi.selected)">
+                        <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="komoditi in komoditas | filter: $select.search">
+                            <div ng-bind-html="komoditi | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <canvas class="chart chart-line" chart-data="grm4data" chart-labels="grm4labels" chart-legend="true" chart-series="grm4series" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer></footer>

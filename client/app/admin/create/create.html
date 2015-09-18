@@ -1,0 +1,45 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-person-add ion-w"></span> Create User</h3>
+                </div>
+                <div class="panel-body">
+                    <form name="form" ng-submit="submit(form)" novalidate>
+                        <div class="form-group">
+                            <label>Kabupaten / Kota <sup class="req">*</sup></label>
+                            <ui-select name="kabkota" ng-model="kabkota.selected" ng-change="get(kabkota.selected)" required>
+                                <ui-select-match>{{$select.selected.fullname}}</ui-select-match>
+                                <ui-select-choices repeat="kabkota in kabkotas | filter: {fullname: $select.search}">
+                                    <div ng-bind-html="kabkota.fullname | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <p class="help-block" ng-show="form.kabkota.$error.required && submitted">
+                                Tidak boleh kosong
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>No. Telp <sup class="req">*</sup></label>
+                            <input type="text" name="telp" class="input-control" ng-model="data.telp" ng-pattern="/^(\d)+$/" required />
+                            <p class="help-block" ng-show="form.telp.$error.required && submitted">
+                                Tidak boleh kosong
+                            </p>
+                            <p class="help-block" ng-show="form.telp.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

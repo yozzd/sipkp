@@ -1,0 +1,89 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal)" data-date-format="dd MMMM yyyy" bs-datepicker />
+                    </div>
+                </div>
+            </div>
+            <div class="well">
+                <h4>Laporan Harian Harga Eceran Komoditas Peternakan</h4>
+            </div>
+            <div class="panel panel-default" ng-show="ecnodata">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Laporan Harian Harga Produsen</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="ecdatas.length>0">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Laporan Harian Harga Eceran</h3>
+                    <input type="text" placeholder="Cari Kabupaten / Kota" class="input-control pull-right" ng-class="{'animate fadeInRight speed-200':showsearch,'animate fadeOutRight speed-200':!showsearch}" ng-model="search.kabkota" ng-show="showsearch" />
+                    <a href="" class="search pull-right" ng-click="showsearch=!showsearch" title="Cari"><span class="ion ion-ios-search-strong ion-w"></span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered" ng-show="ecdatas.length>0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Kabupaten / Kota</th>
+                                <th class="text-center">Daging Sapi Has Dalam</th>
+                                <th class="text-center">Daging Sapi Bistik</th>
+                                <th class="text-center">Daging Sapi Murni</th>
+                                <th class="text-center">Daging Kerbau</th>
+                                <th class="text-center">Daging Kambing</th>
+                                <th class="text-center">Daging Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in ecdatas | orderBy:'kabkota' | filter:search">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.kabkota}}</td>
+                                <td class="text-right">{{data.sapihasdalam|number:0}}</td>
+                                <td class="text-right">{{data.sapibistik|number:0}}</td>
+                                <td class="text-right">{{data.sapimurni|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

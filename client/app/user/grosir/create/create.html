@@ -1,0 +1,135 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-android-create ion-w"></span> Input Harga Harian Grosir</h3>
+                </div>
+                <div class="panel-body">
+                    <form name="form" ng-submit="submit(form)" novalidate>
+                        <div class="form-group">
+                            <label>Tanggal</label>
+                            <input type="text" name="tanggal" class="input-control" ng-model="data.tanggal" data-date-format="dd MMMM yyyy" bs-datepicker required />
+                            <p class="help-block" ng-show="form.tanggal.$invalid && submitted">
+                                Format tanggal salah
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Sapi</label>
+                            <input type="text" name="sapi" class="input-control" ng-model="data.sapi" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.sapi.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Kerbau</label>
+                            <input type="text" name="kerbau" class="input-control" ng-model="data.kerbau" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.kerbau.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Kambing</label>
+                            <input type="text" name="kambing" class="input-control" ng-model="data.kambing" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.kambing.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Domba</label>
+                            <input type="text" name="domba" class="input-control" ng-model="data.domba" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.domba.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Ayam Broiler</label>
+                            <input type="text" name="ayambroiler" class="input-control" ng-model="data.ayambroiler" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.ayambroiler.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Ayam Buras</label>
+                            <input type="text" name="ayamburas" class="input-control" ng-model="data.ayamburas" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.ayamburas.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Karkas Itik</label>
+                            <input type="text" name="itik" class="input-control" ng-model="data.itik" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.itik.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>DOC Broiler</label>
+                            <input type="text" name="docbroiler" class="input-control" ng-model="data.docbroiler" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.docbroiler.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>DOC Layer</label>
+                            <input type="text" name="doclayer" class="input-control" ng-model="data.doclayer" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.doclayer.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Telur Ayam Ras</label>
+                            <input type="text" name="telurayamras" class="input-control" ng-model="data.telurayamras" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.telurayamras.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Telur Ayam Buras</label>
+                            <input type="text" name="telurayamburas" class="input-control" ng-model="data.telurayamburas" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.telurayamburas.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Telur Itik</label>
+                            <input type="text" name="teluritik" class="input-control" ng-model="data.teluritik" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.teluritik.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Susu Sapi Segar</label>
+                            <input type="text" name="susu" class="input-control" ng-model="data.susu" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.susu.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Pakan Ternak Broiler</label>
+                            <input type="text" name="pakanbroiler" class="input-control" ng-model="data.pakanbroiler" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.pakanbroiler.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Pakan Ternak Konsentrat Layer</label>
+                            <input type="text" name="pakanlayer" class="input-control" ng-model="data.pakanlayer" ng-pattern="/^(\d)+$/" />
+                            <p class="help-block" ng-show="form.pakanlayer.$error.pattern && submitted">
+                                Harus angka
+                            </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

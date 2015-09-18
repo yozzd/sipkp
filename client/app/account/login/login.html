@@ -1,0 +1,21 @@
+<header></header>
+<navbar></navbar>
+
+<div class="login animate flipInY speed-1000">
+    <div><img src="assets/images/sumut.png" />
+    </div>
+    <h4>Sistem Informasi<br/>Pasar Komoditas Peternakan</h4>
+    <form class="login-form" name="form" ng-submit="login(form)" novalidate>
+        <input type="text" class="input-control" name="email" placeholder="Username" ng-model="user.email" required>
+        <input type="password" class="input-control" name="password" placeholder="Password" ng-model="user.password" required>
+        <div>
+            <p class="help-block" ng-show="(form.email.$error.required || form.password.$error.required) && submitted">
+                <i class="fa fa-times-circle fa-fw"></i> Please enter your username and password
+            </p>
+            <p class="help-block" ng-show="errors.other"><i class="fa fa-times-circle fa-fw"></i> {{errors.other}}</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm btn-block"><i class="ion ion-log-in"></i> Login</button>
+    </form>
+</div>
+
+<footer></footer>

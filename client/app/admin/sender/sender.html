@@ -1,0 +1,59 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">SMS Sender</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <input type="checkbox" ng-model="check" ng-change="checkAll()">
+                                </th>
+                                <th class="text-center">Username</th>
+                                <th class="text-center">Kabupaten / Kota</th>
+                                <th class="text-center">No. Telp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in datas | orderBy:'kabkota'">
+                                <td class="text-center">
+                                    <input type="checkbox" checklist-model="user.telp" checklist-value="data.telp">
+                                </td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.kabkota}}</td>
+                                <td>{{data.telp}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <form name="form" ng-submit="submit(form)" novalidate>
+                        <div class="form-group">
+                            <label>Isi SMS <sup class="req">*</sup></label>
+                            <textarea name="sms" class="textarea-control" rows="5" ng-model="data.sms" required></textarea>
+                            <p class="help-block" ng-show="form.sms.$error.required && submitted">
+                                Tidak boleh kosong
+                            </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

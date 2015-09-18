@@ -1,0 +1,77 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Laporan</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Bulan</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal)" data-date-format="MMMM yyyy" bs-datepicker />
+                    </div>
+                </div>
+            </div>
+            <div class="well" ng-show="evaluasi">
+                <h4>Laporan Bulanan Evaluasi Per Kabupaten / Kota</h4>
+            </div>
+            <div class="panel panel-default" ng-show="nodata">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}}</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="evaluasi">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Bulan {{tanggal | amDateFormat:'MMMM'}}</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="sort" ng-click="predicate='kabkota'; reverse=!reverse">
+                                    <span>Kabupaten / Kota<span ng-show="predicate=='kabkota'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='produsen'; reverse=!reverse">
+                                    <span>Produsen<span ng-show="predicate=='produsen'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='grosir'; reverse=!reverse">
+                                    <span>Grosir<span ng-show="predicate=='grosir'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='eceran'; reverse=!reverse">
+                                    <span>Eceran<span ng-show="predicate=='eceran'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="sort" ng-click="predicate='total'; reverse=!reverse">
+                                    <span>Total<span ng-show="predicate=='total'"><span ng-class="{'ion-arrow-up-b pull-right':!reverse,'ion-arrow-down-b pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in evaluasi | orderBy:predicate:reverse">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.kabkota}}</td>
+                                <td ng-repeat="evaluasi in data.evaluasi track by $index" class="text-right">{{evaluasi|number:2}}&#37;</td>
+                                <td class="text-right">{{data.total|number:2}}&#37;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

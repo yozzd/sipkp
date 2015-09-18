@@ -1,0 +1,23 @@
+<div class="navbar navbar-inverse navbar-static-top" ng-controller="NavbarCtrl" bs-collapse data-start-collapsed="true">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="" class="navbar-toggle" bs-collapse-toggle>
+                <span class="ion ion-navicon-round"></span>
+            </a>
+            <a ui-sref="main" class="navbar-brand">SIPKP</a>
+        </div>
+        <ul class="log pull-right">
+            <li ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+            <li ng-show="isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+        </ul>
+        <div class="navbar-collapse" bs-collapse-target>
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in menu" ui-sref-active="active">
+                    <a ui-sref="{{item.state}}">{{item.title}}</a>
+                </li>
+                <li ng-show="isAdmin()" ui-sref-active="active"><a ui-sref="admin">{{getCurrentUser().name}}</a></li>
+                <li ng-show="isUser()" ui-sref-active="active"><a ui-sref="user">{{getCurrentUser().name}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

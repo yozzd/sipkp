@@ -1,0 +1,86 @@
+<header></header>
+<navbar></navbar>
+<submenu></submenu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ncy-breadcrumb></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <input type="text" name="tanggal" class="input-control" ng-model="tanggal" ng-change="get(tanggal)" data-date-format="dd MMMM yyyy" bs-datepicker />
+                    </div>
+                </div>
+            </div>
+            <div class="well">
+                <h4>Laporan Harian Harga Eceran Komoditas Peternakan</h4>
+            </div>
+            <div class="panel panel-default" ng-show="ecnodata">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Laporan Harian Harga Eceran</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Tidak ada data</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" ng-show="ecdatas.length>0">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="ion ion-clipboard ion-w"></span> Laporan Harian Harga Eceran</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered" ng-show="ecdatas.length>0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Daging Sapi Has Dalam</th>
+                                <th class="text-center">Daging Sapi Bistik</th>
+                                <th class="text-center">Daging Sapi Murni</th>
+                                <th class="text-center">Daging Kerbau</th>
+                                <th class="text-center">Daging Kambing</th>
+                                <th class="text-center">Daging Domba</th>
+                                <th class="text-center">Karkas Ayam Broiler</th>
+                                <th class="text-center">Karkas Ayam Buras</th>
+                                <th class="text-center">DOC Broiler</th>
+                                <th class="text-center">DOC Layer</th>
+                                <th class="text-center">Telur Ayam Ras</th>
+                                <th class="text-center">Telur Ayam Buras</th>
+                                <th class="text-center">Telur Itik</th>
+                                <th class="text-center">Susu Sapi Segar</th>
+                                <th class="text-center">Pakan Ternak Broiler</th>
+                                <th class="text-center">Pakan Ternak Konsentrat Layer</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in ecdatas">
+                                <td class="text-right">{{data.sapihasdalam|number:0}}</td>
+                                <td class="text-right">{{data.sapibistik|number:0}}</td>
+                                <td class="text-right">{{data.sapimurni|number:0}}</td>
+                                <td class="text-right">{{data.kerbau|number:0}}</td>
+                                <td class="text-right">{{data.kambing|number:0}}</td>
+                                <td class="text-right">{{data.domba|number:0}}</td>
+                                <td class="text-right">{{data.ayambroiler|number:0}}</td>
+                                <td class="text-right">{{data.ayamburas|number:0}}</td>
+                                <td class="text-right">{{data.docbroiler|number:0}}</td>
+                                <td class="text-right">{{data.doclayer|number:0}}</td>
+                                <td class="text-right">{{data.telurayamras|number:0}}</td>
+                                <td class="text-right">{{data.telurayamburas|number:0}}</td>
+                                <td class="text-right">{{data.teluritik|number:0}}</td>
+                                <td class="text-right">{{data.susu|number:0}}</td>
+                                <td class="text-right">{{data.pakanbroiler|number:0}}</td>
+                                <td class="text-right">{{data.pakanlayer|number:0}}</td>
+                                <td class="text-center"><a ui-sref=".ecedit({id:data._id})">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer></footer>
