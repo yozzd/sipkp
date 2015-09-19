@@ -4,7 +4,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-2 col-sm-3 col-xs-6 fadeInRight speed-1000 stagger-100 widget" ng-repeat="menu in menus">
+            <a ui-sref="{{menu.state}}"><span class="icon {{menu.icon}}"><span class="overlay">{{menu.label}}</span></span></a>
         </div>
     </div>
 </div>
