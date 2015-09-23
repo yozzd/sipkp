@@ -40,8 +40,11 @@ angular.module('sipkpApp', [
 
         //ui-select config
         uiSelectConfig.theme = 'select2';
+
+        //block-ui
         blockUIConfig.delay = 0;
         blockUIConfig.templateUrl = 'components/template/blockui.tpl.html';
+        blockUIConfig.autoBlock = false;
     })
 
 .factory('authInterceptor', function ($rootScope, $q, $cookies, $injector) {
