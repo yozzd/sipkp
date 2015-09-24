@@ -242,7 +242,7 @@ module.exports = function (grunt) {
                 src: [
           '<%= yeoman.dist %>/client/!(bower_components){,*/}*.{js,css}',
           '<%= yeoman.dist %>/client/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/client/assets/fonts/*'
+          /*'<%= yeoman.dist %>/client/assets/fonts/*'*/
         ]
             }
         },
@@ -735,7 +735,7 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'babel:server',
-    'cdnify',
+    /*'cdnify',*/
     'cssmin',
     'uglify',
     'filerev',

@@ -10,7 +10,15 @@ import Sequelize from 'sequelize';
 
 var db = {
     Sequelize: Sequelize,
-    sequelize: new Sequelize(config.sequelize.database, config.sequelize.user, config.sequelize.password, config.sequelize.options)
+    sequelize: new Sequelize('sipkp', 'root', 'root', {
+        dialect: 'mariadb',
+        logging: false,
+        define: {
+            timestamps: false,
+            freezeTableName: true,
+            engine: 'MYISAM'
+        }
+    })
 };
 
 // Insert models below
