@@ -74,7 +74,7 @@ exports.show = function (req, res) {
 
 // Creates a new Produsen in the DB
 exports.create = function (req, res) {
-    req.body.receiveddate = new Date(req.body.tanggal);
+    req.body.receiveddate = moment(new Date(req.body.tanggal)).format('YYYY-MM-DD');
     req.body.receivedtime = new Date().toLocaleTimeString();
     Produsen.findAll()
         .then(function (produsen) {

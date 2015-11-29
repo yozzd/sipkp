@@ -2,6 +2,7 @@
 
 angular.module('sipkpApp')
     .controller('MainHarianProdusenCtrl', function ($scope, Restangular, socket, blockUI, $timeout) {
+
         $scope.tanggal = Date.now();
 
         function getProdusen(tanggal) {
